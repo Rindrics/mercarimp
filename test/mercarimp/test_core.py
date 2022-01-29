@@ -1,14 +1,15 @@
 import pytest
+
 from mercarimp.core import SearchCondition
 
 
 @pytest.fixture()
 def search_cond():
-        sc = SearchCondition("hoge")
-        return sc
+    sc = SearchCondition("hoge")
+    return sc
 
 
-class TestSearchCondition():
+class TestSearchCondition:
     def test_init(self, search_cond):
         assert search_cond.keyword == "hoge"
 
