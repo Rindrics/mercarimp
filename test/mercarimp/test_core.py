@@ -24,3 +24,9 @@ class TestSearchCondition:
 
         assert search_cond.keyword == "fuga"
 
+    def test_set_commodity_condition(self, search_cond):
+        """commodity_condition is set"""
+        # GIVEN an initialized SearchCondition
+        search_cond.set_commodity_condition(0)
+
+        assert search_cond.commodity_condition == 0
