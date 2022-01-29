@@ -35,3 +35,16 @@ class TestSearchCondition:
         search_cond.set_commodity_condition(condition)
 
         assert search_cond.commodity_condition == expected
+
+    @pytest.mark.parametrize("invalid_condition",
+                             [-1, 6, "hoge", True, None])
+    def test_set_invalid_commodity_condition(self, search_cond, invalid_condition):
+        """set_commodity_condition() raise an exception
+        when being passed an invalid commodity_codition"""
+        # GIVEN an initialized SearchCondition
+        # WHEN invalid commodity condition is given
+        # THEN set_commodity_condition() raises an exception
+
+        with pytest.raises(Exception):
+            search_cond.set_commodity_condition(invalid_condition)
+
