@@ -3,7 +3,7 @@ TEST=test/mercarimp
 
 
 test: $(SRC) $(TEST)
-	poetry run python3 -m pytest -s test
+	poetry run python3 -m pytest -sv test
 
 fmt: lint
 	poetry run isort ${SRC} ${TEST} &&\

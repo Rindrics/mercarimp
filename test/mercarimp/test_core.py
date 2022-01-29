@@ -24,9 +24,14 @@ class TestSearchCondition:
 
         assert search_cond.keyword == "fuga"
 
-    def test_set_commodity_condition(self, search_cond):
+
+    @pytest.mark.parametrize("condition, expected",
+                             list(zip(range(6), range(6))))
+    def test_set_commodity_condition(self, search_cond, condition, expected):
         """commodity_condition is set"""
         # GIVEN an initialized SearchCondition
-        search_cond.set_commodity_condition(0)
+        # WHEN valid commodity condition is given
+        # THEN commodity_condition is set
+        search_cond.set_commodity_condition(condition)
 
-        assert search_cond.commodity_condition == 0
+        assert search_cond.commodity_condition == expected
