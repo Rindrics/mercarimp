@@ -1,6 +1,6 @@
 import pytest
 
-from mercarimp.core import SearchCondition
+from mercarimp.search_condition import SearchCondition
 
 
 @pytest.fixture()
