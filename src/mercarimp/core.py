@@ -24,23 +24,17 @@ class SearchCondition:
         self.keyword = keyword
 
     def set_item_condition_id(self, condition_id):
-        self._validate_item_condition_id(condition_id)
+        self._validate_attr_id(condition_id, self._valid_item_conditions)
         self.item_condition_id = condition_id
 
-    def _validate_item_condition_id(self, condition_id):
-        if type(condition_id) != int:
-            raise TypeError
-        if condition_id not in self._valid_item_conditions.keys():
-            raise ValueError
-
     def set_status(self, status_id):
-        self._validate_status_id(status_id)
+        self._validate_attr_id(status_id, self._valid_status)
         self.status = self._valid_status[status_id]
 
-    def _validate_status_id(self, status_id):
-        if type(status_id) != int:
+    def _validate_attr_id(self, id, attr_dict):
+        if type(id) != int:
             raise TypeError
-        if status_id not in self._valid_status.keys():
+        if id not in attr_dict.keys():
             raise ValueError
 
     def query(self):
