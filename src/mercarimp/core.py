@@ -1,5 +1,5 @@
 class SearchCondition:
-    _valid_commodity_conditions = {
+    _valid_item_conditions = {
         # メルカリの定義合わせて 1 始まりとした
         1: "新品、未使用：購入してからあまり時間が経っておらず、一度も使用していない",
         2: "未使用に近い：数回しか使用しておらず、傷や汚れがない",
@@ -20,14 +20,14 @@ class SearchCondition:
     def set_keyword(self, keyword):
         self.keyword = keyword
 
-    def set_commodity_condition(self, condition):
-        self._validate_commodity_condition(condition)
-        self.commodity_condition = condition
+    def set_item_condition(self, condition):
+        self._validate_item_condition(condition)
+        self.item_condition = condition
 
-    def _validate_commodity_condition(self, condition):
+    def _validate_item_condition(self, condition):
         if type(condition) != int:
             raise TypeError
-        if condition not in self._valid_commodity_conditions.keys():
+        if condition not in self._valid_item_conditions.keys():
             raise ValueError
 
     def set_deal_status(self, status):

@@ -27,26 +27,26 @@ class TestSearchCondition:
 
     @pytest.mark.parametrize("condition, expected",
                              list(zip(range(1, 7), range(1, 7))))
-    def test_set_commodity_condition(self, search_cond, condition, expected):
-        """commodity_condition is set"""
+    def test_set_item_condition(self, search_cond, condition, expected):
+        """item_condition is set"""
         # GIVEN an initialized SearchCondition
-        # WHEN valid commodity condition is given
-        # THEN commodity_condition is set
-        search_cond.set_commodity_condition(condition)
+        # WHEN valid item condition is given
+        # THEN item_condition is set
+        search_cond.set_item_condition(condition)
 
-        assert search_cond.commodity_condition == expected
+        assert search_cond.item_condition == expected
 
     @pytest.mark.parametrize("invalid_condition",
                              [-1, 0, 7, "hoge", True, None])
-    def test_set_invalid_commodity_condition(self, search_cond, invalid_condition):
-        """set_commodity_condition() raise an exception
-        when being passed an invalid commodity_codition"""
+    def test_set_invalid_item_condition(self, search_cond, invalid_condition):
+        """set_item_condition() raise an exception
+        when being passed an invalid item_codition"""
         # GIVEN an initialized SearchCondition
-        # WHEN invalid commodity condition is given
-        # THEN set_commodity_condition() raises an exception
+        # WHEN invalid item condition is given
+        # THEN set_item_condition() raises an exception
 
         with pytest.raises(Exception):
-            search_cond.set_commodity_condition(invalid_condition)
+            search_cond.set_item_condition(invalid_condition)
 
     def test_set_deal_status(self, search_cond):
         """deal_status is set"""
