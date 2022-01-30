@@ -8,6 +8,11 @@ class SearchCondition:
         5: "全体的に状態が悪い",
     }
 
+    _valid_deal_status = {
+        0: "sold_out",
+        1: "on_sale",
+    }
+
     def __init__(self, keyword):
         self.set_keyword(keyword)
 
@@ -22,4 +27,14 @@ class SearchCondition:
         if type(condition) != int:
             raise TypeError
         if condition not in self._valid_commodity_conditions.keys():
+            raise ValueError
+
+    def set_deal_status(self, status):
+        self._validate_deal_status(status)
+        self.deal_status = status
+
+    def _validate_deal_status(self, condition):
+        if type(condition) != int:
+            raise TypeError
+        if condition not in self._valid_deal_status.keys():
             raise ValueError

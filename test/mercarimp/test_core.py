@@ -48,3 +48,12 @@ class TestSearchCondition:
         with pytest.raises(Exception):
             search_cond.set_commodity_condition(invalid_condition)
 
+    def test_set_deal_status(self, search_cond):
+        """deal_status is set"""
+        # GIVEN an initialized SearchCondition
+        # WHEN valid deal condition is given
+        # THEN deal_status is set
+
+        search_cond.set_deal_status(0)
+
+        assert search_cond.deal_status == 0
