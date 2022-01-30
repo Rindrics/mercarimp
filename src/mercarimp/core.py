@@ -1,5 +1,7 @@
 from http.client import HTTPSConnection
 
+from mercarimp.query import construct_query
+
 
 class SearchCondition:
     _valid_item_conditions = {
@@ -38,14 +40,11 @@ class SearchCondition:
             raise ValueError
 
     def query(self):
-        url = (
-            "https://jp.mercari.com/search?"
-            + "keyword="
-            + self.keyword
-            + "&item_condition_id="
-            + str(self.item_condition_id)
-            + "&status="
-            + self.status
+        url = construct_query(
+            "https://jp.mercari.com/search?",
+            self.keyword,
+            self.item_condition_id,
+            self.status,
         )
         conn = HTTPSConnection("www.python.org")
 
