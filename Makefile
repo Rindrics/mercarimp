@@ -6,6 +6,8 @@ TESTFLAGS=-sv
 test: $(SRC) $(TEST)
 	poetry run python3 -m pytest $(TESTFLAGS) test
 
+build: test fmt
+	poetry build
 
 fmt: lint
 	poetry run isort ${SRC} ${TEST} &&\
