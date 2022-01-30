@@ -14,7 +14,7 @@ def search_cond():
 def search_cond_with_attributes(search_cond):
     """SearchCondition instance with attributes"""
     search_cond.set_keyword("NIKE")
-    search_cond.set_item_condition(1)
+    search_cond.set_item_condition_id(1)
     search_cond.set_status(0)
     return search_cond
 
@@ -32,26 +32,26 @@ class TestSearchCondition:
 
         assert search_cond.keyword == "fuga"
 
-    @pytest.mark.parametrize("condition, expected", list(zip(range(1, 7), range(1, 7))))
-    def test_set_item_condition(self, search_cond, condition, expected):
-        """item_condition is set"""
+    @pytest.mark.parametrize("condition_id, expected", list(zip(range(1, 7), range(1, 7))))
+    def test_set_item_condition_id(self, search_cond, condition_id, expected):
+        """item_condition_id is set"""
         # GIVEN an initialized SearchCondition
         # WHEN valid item condition is given
-        # THEN item_condition is set
-        search_cond.set_item_condition(condition)
+        # THEN item_condition_id is set
+        search_cond.set_item_condition_id(condition_id)
 
-        assert search_cond.item_condition == expected
+        assert search_cond.item_condition_id == expected
 
-    @pytest.mark.parametrize("invalid_condition", [-1, 0, 7, "hoge", True, None])
-    def test_set_invalid_item_condition(self, search_cond, invalid_condition):
-        """set_item_condition() raise an exception
+    @pytest.mark.parametrize("invalid_condition_id", [-1, 0, 7, "hoge", True, None])
+    def test_set_invalid_item_condition_id(self, search_cond, invalid_condition_id):
+        """set_item_condition_id() raise an exception
         when being passed an invalid item_codition"""
         # GIVEN an initialized SearchCondition
         # WHEN invalid item condition is given
-        # THEN set_item_condition() raises an exception
+        # THEN set_item_condition_id() raises an exception
 
         with pytest.raises(Exception):
-            search_cond.set_item_condition(invalid_condition)
+            search_cond.set_item_condition_id(invalid_condition_id)
 
     def test_set_status(self, search_cond):
         """status is set"""

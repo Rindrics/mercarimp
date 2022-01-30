@@ -23,14 +23,14 @@ class SearchCondition:
     def set_keyword(self, keyword):
         self.keyword = keyword
 
-    def set_item_condition(self, condition):
-        self._validate_item_condition(condition)
-        self.item_condition = condition
+    def set_item_condition_id(self, condition_id):
+        self._validate_item_condition_id(condition_id)
+        self.item_condition_id = condition_id
 
-    def _validate_item_condition(self, condition):
-        if type(condition) != int:
+    def _validate_item_condition_id(self, condition_id):
+        if type(condition_id) != int:
             raise TypeError
-        if condition not in self._valid_item_conditions.keys():
+        if condition_id not in self._valid_item_conditions.keys():
             raise ValueError
 
     def set_status(self, status):
@@ -49,7 +49,7 @@ class SearchCondition:
             + "keyword="
             + self.keyword
             + "&item_condition_id="
-            + str(self.item_condition)
+            + str(self.item_condition_id)
             + "&status="
             + self._valid_status[self.status]
         )
