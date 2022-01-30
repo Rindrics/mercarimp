@@ -12,7 +12,7 @@ class SearchCondition:
         6: "全体的に状態が悪い",
     }
 
-    _valid_deal_status = {
+    _valid_status = {
         0: "sold_out",
         1: "on_sale",
     }
@@ -33,14 +33,14 @@ class SearchCondition:
         if condition not in self._valid_item_conditions.keys():
             raise ValueError
 
-    def set_deal_status(self, status):
-        self._validate_deal_status(status)
-        self.deal_status = status
+    def set_status(self, status):
+        self._validate_status(status)
+        self.status = status
 
-    def _validate_deal_status(self, condition):
+    def _validate_status(self, condition):
         if type(condition) != int:
             raise TypeError
-        if condition not in self._valid_deal_status.keys():
+        if condition not in self._valid_status.keys():
             raise ValueError
 
     def query(self):
@@ -51,7 +51,7 @@ class SearchCondition:
             + "&item_condition_id="
             + str(self.item_condition)
             + "&status="
-            + self._valid_deal_status[self.deal_status]
+            + self._valid_status[self.status]
         )
         conn = HTTPSConnection("www.python.org")
 

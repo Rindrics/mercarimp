@@ -15,7 +15,7 @@ def search_cond_with_attributes(search_cond):
     """SearchCondition instance with attributes"""
     search_cond.set_keyword("NIKE")
     search_cond.set_item_condition(1)
-    search_cond.set_deal_status(0)
+    search_cond.set_status(0)
     return search_cond
 
 
@@ -53,15 +53,15 @@ class TestSearchCondition:
         with pytest.raises(Exception):
             search_cond.set_item_condition(invalid_condition)
 
-    def test_set_deal_status(self, search_cond):
-        """deal_status is set"""
+    def test_set_status(self, search_cond):
+        """status is set"""
         # GIVEN an initialized SearchCondition
         # WHEN valid deal condition is given
-        # THEN deal_status is set
+        # THEN status is set
 
-        search_cond.set_deal_status(0)
+        search_cond.set_status(0)
 
-        assert search_cond.deal_status == 0
+        assert search_cond.status == 0
 
     def test_query(self, search_cond_with_attributes):
         """query Mercari for items"""
