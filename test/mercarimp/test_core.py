@@ -9,6 +9,13 @@ def search_cond():
     sc = SearchCondition("hoge")
     return sc
 
+@pytest.fixture()
+def search_cond_with_attributes(search_cond):
+    """SearchCondition instance with attributes"""
+    search_cond.set_keyword("NIKE")
+    search_cond.set_item_condition(1)
+    search_cond.set_deal_status(0)
+    return search_cond
 
 class TestSearchCondition:
     def test_init(self, search_cond):
@@ -57,3 +64,12 @@ class TestSearchCondition:
         search_cond.set_deal_status(0)
 
         assert search_cond.deal_status == 0
+
+    def test_query(self, search_cond_with_attributes):
+        """query Mercari for items"""
+        # GIVEN an initialized SearchCondition with valid attributes
+        # WHEN query() is called
+        # THEN HTML is returned
+        response = search_cond_with_attributes.query()
+
+        assert type(response) == bytes
