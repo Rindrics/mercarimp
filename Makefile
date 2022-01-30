@@ -1,9 +1,11 @@
 SRC=src/mercarimp
 TEST=test/mercarimp
+TESTFLAGS=-sv
 
 
 test: $(SRC) $(TEST)
-	poetry run python3 -m pytest -sv test
+	poetry run python3 -m pytest $(TESTFLAGS) test
+
 
 fmt: lint
 	poetry run isort ${SRC} ${TEST} &&\
