@@ -1,5 +1,6 @@
 from http.client import HTTPSConnection
 
+
 class SearchCondition:
     _valid_item_conditions = {
         # メルカリの定義合わせて 1 始まりとした
@@ -18,7 +19,6 @@ class SearchCondition:
 
     def __init__(self, keyword):
         self.set_keyword(keyword)
-
 
     def set_keyword(self, keyword):
         self.keyword = keyword
@@ -44,10 +44,15 @@ class SearchCondition:
             raise ValueError
 
     def query(self):
-        url = ("https://jp.mercari.com/search?"
-               + "keyword=" + self.keyword
-               + "&item_condition_id=" + str(self.item_condition)
-               + "&status=" + self._valid_deal_status[self.deal_status])
+        url = (
+            "https://jp.mercari.com/search?"
+            + "keyword="
+            + self.keyword
+            + "&item_condition_id="
+            + str(self.item_condition)
+            + "&status="
+            + self._valid_deal_status[self.deal_status]
+        )
         conn = HTTPSConnection("www.python.org")
 
         conn.request("GET", url)

@@ -9,6 +9,7 @@ def search_cond():
     sc = SearchCondition("hoge")
     return sc
 
+
 @pytest.fixture()
 def search_cond_with_attributes(search_cond):
     """SearchCondition instance with attributes"""
@@ -17,12 +18,12 @@ def search_cond_with_attributes(search_cond):
     search_cond.set_deal_status(0)
     return search_cond
 
+
 class TestSearchCondition:
     def test_init(self, search_cond):
         """instantiation succeeds"""
         # GIVEN an initialized SearchCondition
         assert search_cond.keyword == "hoge"
-
 
     def test_set_keyword(self, search_cond):
         """keyword can be set"""
@@ -31,9 +32,7 @@ class TestSearchCondition:
 
         assert search_cond.keyword == "fuga"
 
-
-    @pytest.mark.parametrize("condition, expected",
-                             list(zip(range(1, 7), range(1, 7))))
+    @pytest.mark.parametrize("condition, expected", list(zip(range(1, 7), range(1, 7))))
     def test_set_item_condition(self, search_cond, condition, expected):
         """item_condition is set"""
         # GIVEN an initialized SearchCondition
@@ -43,8 +42,7 @@ class TestSearchCondition:
 
         assert search_cond.item_condition == expected
 
-    @pytest.mark.parametrize("invalid_condition",
-                             [-1, 0, 7, "hoge", True, None])
+    @pytest.mark.parametrize("invalid_condition", [-1, 0, 7, "hoge", True, None])
     def test_set_invalid_item_condition(self, search_cond, invalid_condition):
         """set_item_condition() raise an exception
         when being passed an invalid item_codition"""
