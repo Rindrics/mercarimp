@@ -32,7 +32,9 @@ class TestSearchCondition:
 
         assert search_cond.keyword == "fuga"
 
-    @pytest.mark.parametrize("condition_id, expected", list(zip(range(1, 7), range(1, 7))))
+    @pytest.mark.parametrize(
+        "condition_id, expected", list(zip(range(1, 7), range(1, 7)))
+    )
     def test_set_item_condition_id(self, search_cond, condition_id, expected):
         """item_condition_id is set"""
         # GIVEN an initialized SearchCondition
