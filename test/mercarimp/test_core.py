@@ -26,7 +26,7 @@ class TestSearchCondition:
 
 
     @pytest.mark.parametrize("condition, expected",
-                             list(zip(range(6), range(6))))
+                             list(zip(range(1, 7), range(1, 7))))
     def test_set_commodity_condition(self, search_cond, condition, expected):
         """commodity_condition is set"""
         # GIVEN an initialized SearchCondition
@@ -37,7 +37,7 @@ class TestSearchCondition:
         assert search_cond.commodity_condition == expected
 
     @pytest.mark.parametrize("invalid_condition",
-                             [-1, 6, "hoge", True, None])
+                             [-1, 0, 7, "hoge", True, None])
     def test_set_invalid_commodity_condition(self, search_cond, invalid_condition):
         """set_commodity_condition() raise an exception
         when being passed an invalid commodity_codition"""
