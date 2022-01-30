@@ -37,10 +37,10 @@ class SearchCondition:
         self._validate_status_id(status_id)
         self.status = self._valid_status[status_id]
 
-    def _validate_status_id(self, condition):
-        if type(condition) != int:
+    def _validate_status_id(self, status_id):
+        if type(status_id) != int:
             raise TypeError
-        if condition not in self._valid_status.keys():
+        if status_id not in self._valid_status.keys():
             raise ValueError
 
     def query(self):
