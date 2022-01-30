@@ -33,11 +33,11 @@ class SearchCondition:
         if condition_id not in self._valid_item_conditions.keys():
             raise ValueError
 
-    def set_status(self, status):
-        self._validate_status(status)
-        self.status = status
+    def set_status(self, status_id):
+        self._validate_status_id(status_id)
+        self.status = self._valid_status[status_id]
 
-    def _validate_status(self, condition):
+    def _validate_status_id(self, condition):
         if type(condition) != int:
             raise TypeError
         if condition not in self._valid_status.keys():
@@ -51,7 +51,7 @@ class SearchCondition:
             + "&item_condition_id="
             + str(self.item_condition_id)
             + "&status="
-            + self._valid_status[self.status]
+            + self.status
         )
         conn = HTTPSConnection("www.python.org")
 
