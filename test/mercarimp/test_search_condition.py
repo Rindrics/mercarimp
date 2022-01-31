@@ -48,12 +48,3 @@ class TestSearchCondition:
         search_cond.set_status(0)
 
         assert search_cond.status == "sold_out"
-
-    def test_query(self, search_cond_with_attributes):
-        """query Mercari for items"""
-        # GIVEN an initialized SearchCondition with valid attributes
-        # WHEN query() is called
-        # THEN HTML is returned
-        response = search_cond_with_attributes.query()
-
-        assert type(response) == bytes

@@ -1,8 +1,3 @@
-from http.client import HTTPSConnection
-
-from mercarimp.query import construct_query
-
-
 class SearchCondition:
     _valid_item_conditions = {
         # メルカリの定義合わせて 1 始まりとした
@@ -38,17 +33,3 @@ class SearchCondition:
             raise TypeError
         if id not in attr_dict.keys():
             raise ValueError
-
-    def query(self):
-        url = construct_query(
-            "https://jp.mercari.com/search?",
-            self.keyword,
-            self.item_condition_id,
-            self.status,
-        )
-        conn = HTTPSConnection("www.python.org")
-
-        conn.request("GET", url)
-        response = conn.getresponse()
-
-        return response.read()
