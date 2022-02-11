@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "mercari-souba"
+name = "mercarimp"
 version = "0.1.0"
 description = ""
 authors = ["Akira Hayashi <smxshxishxad@me.com>"]
